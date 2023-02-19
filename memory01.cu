@@ -12,6 +12,23 @@ __global__ void vector_add(int * C, const int * A, const int * B, const int size
    }
 }
 
+__global__ void use_local_memory_GPU(float in)
+{
+    float f;    // variable "f" is in local memory and private to each thread
+    f = in;     // parameter "in" is in local memory and private to each thread
+    // ... real code would presumably do other stuff here ... 
+}
+
+/**********************
+ * using global memory *
+ **********************/
+
+// a __global__ function runs on the GPU & can be called from host
+__global__ void use_global_memory_GPU(float *array)
+{
+    // "array" is a pointer into global memory on the device
+    array[threadIdx.x] = 2.0f * (float) threadIdx.x;
+}
 
 int main()
 {
