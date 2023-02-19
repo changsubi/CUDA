@@ -19,11 +19,6 @@ __global__ void use_local_memory_GPU(float in)
     // ... real code would presumably do other stuff here ... 
 }
 
-/**********************
- * using global memory *
- **********************/
-
-// a __global__ function runs on the GPU & can be called from host
 __global__ void use_global_memory_GPU(float *array)
 {
     // "array" is a pointer into global memory on the device
