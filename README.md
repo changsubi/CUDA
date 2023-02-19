@@ -1,3 +1,3 @@
 # CUDA
 Nvidia GPU using CUDA Core.   
-How to use CUDA Programing.
+How to use CUDA Programming.
