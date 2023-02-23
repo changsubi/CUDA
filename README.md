@@ -17,14 +17,19 @@ How to use CUDA Programming.
 • This is our “parallel” function   
 • Given to each thread   
 • Simple example, implementation:   
+```
+<pre>
+<code>
+__global__ void
+cudaAddVectorsKernel(float *a, float *b, float *c)
+{
+   //Device an index somehow
+   c[index] = a[index] + b[index];
+}
+</code>
+</pre>
+```
 
-	__global__ void
-	cudaAddVectorsKernel(float *a, float *b, float *c)
-	{
-	   //Device an index somehow
-	   c[index] = a[index] + b[index];
-	}
-   
 ## Compile It with NVCC   
 • CUDA is simply an extension of other bits of code you write!!!!   
 • Evident in .cu/.cuh vs .cpp/.hpp distinction   
@@ -35,10 +40,20 @@ device code
 • https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#ccplusplus-language-support   
 • .cpp/.hpp is compiled by g++ and the .o file from the CUDA code is
 simply linked in using a "#include xxx.cuh" call   
-• No different from how you link in .o files from normal C++ code
+• No different from how you link in .o files from normal C++ code   
 
-
-
+## Modern GPU: Simplified Version
+• GPUs have many Streaming Multiprocessors (SMs)
+• Each SM has multiple processors but
+only one instruction unit (each thread shares program counter)
+• Groups of processors must run the
+exact same set of instructions at any
+given time with in a single SM
+• Think of Device Memory as a RAM for your GPU
+• Also refer to it as Global Memory
+• Faster than getting memory from the
+actual RAM but still have other options
+• Will come back to this in future lectures
 
 
 
