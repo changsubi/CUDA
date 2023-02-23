@@ -22,3 +22,23 @@ The Kernel
 	   //Device an index somehow
 	   c[index] = a[index] + b[index];
 	}
+   
+Compile It with NVCC   
+• CUDA is simply an extension of other bits of code you write!!!!   
+• Evident in .cu/.cuh vs .cpp/.hpp distinction   
+• .cu/.cuh is compiled by nvcc to produce a .o file   
+• Since CUDA 7.0 / 9.0 there’s support by NVCC for most C++11 /
+C++14 language features, but make sure to read restrictions for
+device code   
+• https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#ccplusplus-language-support   
+• .cpp/.hpp is compiled by g++ and the .o file from the CUDA code is
+simply linked in using a "#include xxx.cuh" call   
+• No different from how you link in .o files from normal C++ code
+
+
+
+
+
+
+
+
