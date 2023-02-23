@@ -44,7 +44,7 @@ simply linked in using a "#include xxx.cuh" call
 • Each SM has multiple processors but only one instruction unit (each thread shares program counter)   
 • Groups of processors must run the exact same set of instructions at any given time with in a single SM   
 • Think of Device Memory as a RAM for your GPU Also refer to it as Global Memory Faster than getting memory from the actual RAM but still have other options   
-<img src="[http://cfile6.uf.tistory.com/image/2426E646543C9B4532C7B0](https://user-images.githubusercontent.com/100255173/220856882-bf6864cf-834f-4f85-86ac-bb110a2388fe.png)" width="40%" height="30%"></img>
+<img src="https://user-images.githubusercontent.com/100255173/220856882-bf6864cf-834f-4f85-86ac-bb110a2388fe.png" width="40%" height="30%"></img>
 
 
 
