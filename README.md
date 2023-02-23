@@ -39,17 +39,14 @@ simply linked in using a "#include xxx.cuh" call
 • No different from how you link in .o files from normal C++ code   
 
 ## Modern GPU: Simplified Version
-• GPUs have many Streaming Multiprocessors (SMs)
-• Each SM has multiple processors but
-only one instruction unit (each thread shares program counter)
-• Groups of processors must run the
-exact same set of instructions at any
-given time with in a single SM
-• Think of Device Memory as a RAM for your GPU
-• Also refer to it as Global Memory
-• Faster than getting memory from the
-actual RAM but still have other options
-• Will come back to this in future lectures
+• GPUs have many Streaming Multiprocessors (SMs)  
+• SM consists of 8 SP(Scalar Processor)   
+• Each SM has multiple processors but only one instruction unit (each thread shares program counter)   
+• Groups of processors must run the exact same set of instructions at any given time with in a single SM   
+• Think of Device Memory as a RAM for your GPU   
+• Also refer to it as Global Memory   
+• Faster than getting memory from the actual RAM but still have other options   
+• Will come back to this in future lectures   
 
 
 
