@@ -45,6 +45,8 @@ simply linked in using a "#include xxx.cuh" call
 • Think of Device Memory as a RAM for your GPU Also refer to it as **Global Memory** Faster than getting memory from the actual RAM but still have other options   
 • The GPU operates (memory reference) in 1SM units (32 threads : 1 Warp)   
 • In the case of memory reference with 16 threads, it is called HalfWarp   
+• **Scalar Processor**(SP), composed of 4 threads and executed   
+• (SM = 8 SPs), (4 threads in 1 SP) : 8*4=32   
 <img src="https://user-images.githubusercontent.com/100255173/220856882-bf6864cf-834f-4f85-86ac-bb110a2388fe.png" width="20%" height="15%"></img>
 
 
