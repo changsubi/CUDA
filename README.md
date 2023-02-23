@@ -10,6 +10,7 @@ How to use CUDA Programming.
 • Copy inputs from host to GPU (slow)   
 • Start GPU kernel (function that executes on gpu – fast!)   
 • Copy output from GPU to host (slow)   
+   
 The Kernel   
 • This is our “parallel” function   
 • Given to each thread   
