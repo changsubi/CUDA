@@ -30,17 +30,6 @@ cudaAddVectorsKernel(float *a, float *b, float *c)
 </pre>
 ```
 
-<pre>
-<code>
-```java
-public class BootSpringBootApplication {
-  public static void main(String[] args) {
-    System.out.println("Hello, Honeymon");
-  }
-}
-```
-</code>
-</pre>
 
 ```java
 public class BootSpringBootApplication {
