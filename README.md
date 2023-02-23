@@ -4,7 +4,7 @@
 Nvidia GPU using CUDA Core.   
 How to use CUDA Programming.   
 ![2D_Convolution_Animation](https://user-images.githubusercontent.com/100255173/219933368-3171935e-c6e5-4541-9925-beca5450abb1.gif)
-## 1. GPU Programming: Step by Step
+## GPU Programming: Step by Step
 • Setup inputs on the host (CPU-accessible memory)   
 • Allocate memory for outputs on the host CPU   
 • Allocate memory for inputs on the GPU   
@@ -13,7 +13,7 @@ How to use CUDA Programming.
 • Start GPU kernel (function that executes on gpu – fast!)   
 • Copy output from GPU to host (slow)   
    
-The Kernel   
+## The Kernel   
 • This is our “parallel” function   
 • Given to each thread   
 • Simple example, implementation:   
@@ -25,7 +25,7 @@ The Kernel
 	   c[index] = a[index] + b[index];
 	}
    
-Compile It with NVCC   
+## Compile It with NVCC   
 • CUDA is simply an extension of other bits of code you write!!!!   
 • Evident in .cu/.cuh vs .cpp/.hpp distinction   
 • .cu/.cuh is compiled by nvcc to produce a .o file   
