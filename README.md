@@ -17,17 +17,13 @@ How to use CUDA Programming.
 • This is our “parallel” function   
 • Given to each thread   
 • Simple example, implementation:   
-```
-<pre>
-<code>
+```cpp
 __global__ void
 cudaAddVectorsKernel(float *a, float *b, float *c)
 {
    //Device an index somehow
    c[index] = a[index] + b[index];
 }
-</code>
-</pre>
 ```
 
 
