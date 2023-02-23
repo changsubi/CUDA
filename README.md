@@ -47,6 +47,9 @@ simply linked in using a "#include xxx.cuh" call
 • In the case of memory reference with 16 threads, it is called HalfWarp   
 • **Scalar Processor**(SP), composed of 4 threads and executed   
 • (SM = 8 SPs), (4 threads in 1 SP) : 8*4=32   
+• Block: SMs come together to form what is called a block. The number of SMs constituting a block is different for each GPU chip model (usually 16 or 32 SM) (usually 65535 blocks)      
+• Grid: Grid is made up of blocks. Grid can be understood as one GPU chip   
+• Example> SM per block: 32, block: 65536 → Total available threads: 65536 * 32 * 32   
 <img src="https://user-images.githubusercontent.com/100255173/220856882-bf6864cf-834f-4f85-86ac-bb110a2388fe.png" width="200px" height="250px"></img>
 <img src="https://user-images.githubusercontent.com/100255173/220858875-d7d3b4c7-734b-4558-9407-cbb6c67c18a1.png" width="200px" height="250px"></img>
 
