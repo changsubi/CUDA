@@ -54,8 +54,7 @@ simply linked in using a "#include xxx.cuh" call
 <img src="https://user-images.githubusercontent.com/100255173/220858875-d7d3b4c7-734b-4558-9407-cbb6c67c18a1.png" width="200px" height="250px"></img>
 
 ## Thread Indexing
-<img src="https://user-images.githubusercontent.com/100255173/220860701-9069ad88-79f9-455e-a756-9d40f135a2b3.png" width="400px" height="400px"></img>
-   
+<img src="https://user-images.githubusercontent.com/100255173/220861992-b73d9087-f5dd-4bde-a3bc-45cbe826ee2c.png" width="400px" height="400px"></img>
 In the figure above, each cell means a thread. The orange cell is the thread at index (**threadIdx.x = 0, threadIdx.y = 1**) within Block(**blockIdx.x = 1, blockIdx.y = 1**), and the global index of thread ( **x, y**) is (4, 3)   
 The global index (**x, y**) is computed as follows:   
 **x = threadIdx.x + blockIdx.x * blockDim.x = 0 + 1 * 4 = 4**   
