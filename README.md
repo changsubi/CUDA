@@ -1,6 +1,5 @@
 ![image](https://user-images.githubusercontent.com/100255173/220853764-85c17842-a01d-4c0c-9e0e-bd6fc6ada62f.png)
 
-# CUDA
 Nvidia GPU using CUDA Core.   
 How to use CUDA Programming.   
 ![2D_Convolution_Animation](https://user-images.githubusercontent.com/100255173/219933368-3171935e-c6e5-4541-9925-beca5450abb1.gif)
