@@ -55,9 +55,14 @@ simply linked in using a "#include xxx.cuh" call
 
 ## Thread Indexing
 <img src="https://user-images.githubusercontent.com/100255173/220860701-9069ad88-79f9-455e-a756-9d40f135a2b3.png" width="400px" height="400px"></img>
-
-
-
+   
+In the figure above, each cell means a thread. The orange cell is the thread at index (**threadIdx.x = 0, threadIdx.y = 1**) within Block(**blockIdx.x = 1, blockIdx.y = 1**), and the global index of thread ( **x, y**) is (4, 3)   
+The global index (**x, y**) is computed as follows:   
+**x = threadIdx.x + blockIdx.x * blockDim.x = 0 + 1 * 4 = 4**   
+**y = threadIdx.y + blockIdx.y * blockDim.y = 1 + 1 * 2 = 3**   
+When placed in a row, the threads corresponding to the orange cells are counted as follows:   
+**offset = x + y * blockDim.x * gridDim.x = 4 + 3 * 4 * 2 = 4 + 24 = 28**   
+Because GPUs can have a three-dimensional structure, they can of course scale to three dimensions   
 
 
 
