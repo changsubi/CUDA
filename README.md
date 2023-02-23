@@ -53,5 +53,22 @@ simply linked in using a "#include xxx.cuh" call
 <img src="https://user-images.githubusercontent.com/100255173/220856882-bf6864cf-834f-4f85-86ac-bb110a2388fe.png" width="200px" height="250px"></img>
 <img src="https://user-images.githubusercontent.com/100255173/220858875-d7d3b4c7-734b-4558-9407-cbb6c67c18a1.png" width="200px" height="250px"></img>
 
+## Thread Indexing
+<img src="https://user-images.githubusercontent.com/100255173/220860701-9069ad88-79f9-455e-a756-9d40f135a2b3.png" width="400px" height="400px"></img>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
