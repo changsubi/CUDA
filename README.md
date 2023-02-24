@@ -119,7 +119,9 @@ if (status != cudaSuccess){
    fprintf(stderr, "Error returned from pinned memory allocation\n");
    exit(1);
 }
-// TODO something
+
+...
+
 cudaError_t cudaFreeHost(void *ptr); // release pinned memory
 ```
 Allocates as many host memory as count bytes accessible from the device. Because pinned memory can be accessed directly from the device, it has higher read/write bandwidth than pageable memory. However, allocating excessive amounts of pinned memory can reduce the host system's performance by reducing the amount of pageable memory available to the host system that it uses to store virtual memory data.   
