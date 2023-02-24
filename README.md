@@ -174,7 +174,8 @@ In DeepStream, "default memory" typically refers to the memory that is allocated
    NVBUF_MEM_SYSTEM,
  } NvBufSurfaceMemType;
 ```
-
+If you want to directly access and control the image as a result of Deepstream's analysis, opencv must be used. But, since opencv can be accessed from host memory, the memory type must be set to NVBUF_MEM_CUDA_UNIFIED.   
+Because NVBUF_MEM_DEFAULT is allocated to host memory, but the actual analysis result is not saved. And in the case of NVBUF_MEM_CUDA_PINNED and NVBUF_MEM_CUDA_DEVICE, this is impossible because both point to a pointer to device memory.
 
 
 
