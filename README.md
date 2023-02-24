@@ -114,6 +114,7 @@ While global memory is visible to all threads, remember that global memory is no
 The difference in performance between the code that considers memory coalescing and the code that does not occurs 50 to 100%.   
 All threads in the warp issue the same memory instruction. When 32 memory requests executed in this way have consecutive memory addresses and access one cache line, it is called coalesced memory access. In this case, a memory request is created by merging the memory instructions of all threads of warp into one. In other words, Warp can handle all memory requests of 32 threads with only one memory access.   
 However, since non-coalescing does not enter one cache line, one warp requires two cache accesses. As a result, to process one memory instruction in warp, a total of two memory requests must be generated.
+![Untitled](https://user-images.githubusercontent.com/100255173/221075574-4724a164-fa49-49b5-9c01-476c8e9465f6.png)
 
 
 
