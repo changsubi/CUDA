@@ -161,7 +161,19 @@ int main(int argc, char** argv)
 
 **Deepstream** : In Deepstream, a memory type called 'NvBufSurfaceMemType' is declared in 'nvbufsurface.h'.   
 In DeepStream, "default memory" typically refers to the memory that is allocated by the DeepStream framework itself for its internal operations, such as buffering video frames and metadata. This memory is usually allocated on the CPU (host) and is used to communicate data between different components of the pipeline, such as video sources, detectors, and classifiers.   
-"Device memory" in DeepStream refers to the memory that is allocated on the GPU and is used by the different processing elements of the pipeline, such as neural network models and image processing kernels. The device memory in DeepStream can include various types of memory, such as global memory, shared memory, and texture memory, which are specific to the CUDA programming model.
+"Device memory" in DeepStream refers to the memory that is allocated on the GPU and is used by the different processing elements of the pipeline, such as neural network models and image processing kernels. The device memory in DeepStream can include various types of memory, such as global memory, shared memory, and texture memory, which are specific to the CUDA programming model.   
+```cpp
+ typedef enum
+ {
+   NVBUF_MEM_DEFAULT,
+   NVBUF_MEM_CUDA_PINNED,
+   NVBUF_MEM_CUDA_DEVICE,
+   NVBUF_MEM_CUDA_UNIFIED,
+   NVBUF_MEM_SURFACE_ARRAY,
+   NVBUF_MEM_HANDLE,
+   NVBUF_MEM_SYSTEM,
+ } NvBufSurfaceMemType;
+```
 
 
 
