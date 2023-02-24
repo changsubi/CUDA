@@ -174,10 +174,39 @@ In DeepStream, "default memory" typically refers to the memory that is allocated
    NVBUF_MEM_SYSTEM,
  } NvBufSurfaceMemType;
 ```
-If you want to directly access and control the image as a result of Deepstream's analysis, opencv must be used. But, since opencv can be accessed from host memory, the memory type must be set to NVBUF_MEM_CUDA_UNIFIED.   
+If you want to directly access and control the image as a result of Deepstream's analysis, opencv must be used. But, since opencv can be accessed from host memory, the memory type must be set to "NVBUF_MEM_CUDA_UNIFIED".   
 Because NVBUF_MEM_DEFAULT is allocated to host memory, but the actual analysis result is not saved. And in the case of NVBUF_MEM_CUDA_PINNED and NVBUF_MEM_CUDA_DEVICE, this is impossible because both point to a pointer to device memory.
 
-
+```cpp
+ ...
+ 
+ gint mem_id = 3;
+ #define SET_MEMORY(object, mem_id) g_object_set (G_OBJECT (object), "nvbuf-memory-type", mem_id, NULL);
+ ...
+ 
+ for (l_frame = batch_meta->frame_meta_list; l_frame != NULL; l_frame = l_frame->next)
+ {
+     NvDsFrameMeta *frame_meta = (NvDsFrameMeta *) (l_frame->data);
+     
+     /* for cuda device memory we need to use cudamemcpy only using */
+     NvBufSurfaceMap(surface, frame_meta->batch_id, 0, NVBUF_MAP_READ_WRITE);
+     /* Cache the mapped data for CPU access */
+     NvBufSurfaceSyncForCpu(surface, frame_meta->batch_id, 0);
+     
+     guint height = surface->surfaceList[frame_meta->batch_id].height;
+     guint width = surface->surfaceList[frame_meta->batch_id].width;
+     
+     cv::Mat in_mat = cv::Mat (surface->surfaceList[frame_meta->batch_id].planeParams.height[0], surface->surfaceList[frame_meta->batch_id].planeParams.width[0], CV_8UC4, surface->surfaceList[frame_meta->batch_id].mappedAddr.addr[0], surface->surfaceList[frame_meta->batch_id].planeParams.pitch[0]);
+     //Convert RGBA to BGR
+     Mat rgba_mat;
+     cv::cvtColor(in_mat, rgba_mat, COLOR_RGBA2BGR);
+     imwrite(file_name, rgba_mat);
+     
+     ...
+ }
+ 
+ ...
+```
 
 
 
