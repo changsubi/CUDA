@@ -91,8 +91,21 @@ Registers are local to a thread, and each thread has exclusive access to its own
 If the register usage is too large, the value of a specific register (less accessible) is stored in local memory and the register is used for other purposes. (register spilling)   
 When compiling CUDA code using NVCC, the number of registers used per thread can be set. At this time, if the register usage is set small, local memory is used. However, local memory is very slow(Similarly Global Memory).   
 It is better to let the compiler know how to use local memory. Local memory is automatically coalesced for memory access.
-
-
+```cpp
+__global__ void vector_add(const float * A,const float * B, float * C,const int size,const int local_memory_size)
+{
+   int item = (blockIdx.x * blockDim.x) + threadIdx.x;
+   float local_memory[local_memory_size];
+   if ( item < size )
+   {
+      local_memory[0] = A[item];
+      local_memory[1] = B[item];
+      local_memory[2] = local_memory[0] + local_memory[1];
+      C[item] = local_memory[2];
+   }
+}
+```
+**Global Memory**  
 
 
 
