@@ -110,6 +110,30 @@ __global__ void vector_add(const float * A,const float * B, float * C,const int 
 Global memory is the largest memory on the GPU and the slowest. Currently, you can buy GPUs with dozens of gigabytes of global memory. Access latency is known to be about 400~800 cycles. Accessible from anywhere while coding CUDA, but IO is too slow. So, it should be approached as minimally as possible. You can't not use it though. This is because, in the end, only global memory is connected to the CPU when data is transferred to the CPU.   
 While global memory is visible to all threads, remember that global memory is not coherent, and changes made by one thread block may not be available to other thread blocks during the kernel execution. However, all memory operations are finalized when the kernel terminates.
 
+**Memory Coalescing**  
+The difference in performance between the code that considers memory coalescing and the code that does not occurs at most 50 to 100%.   
+All threads in the warp issue the same memory instruction. When 32 memory requests executed in this way have consecutive memory addresses and access one cache line, it is called coalesced memory access. In this case, a memory request is created by merging the memory instructions of all threads of warp into one. In other words, Warp can handle all memory requests of 32 threads with only one memory access.   
+However, since non-coalescing does not enter one cache line, one warp requires two cache accesses. As a result, to process one memory instruction in warp, a total of two memory requests must be generated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
