@@ -72,6 +72,14 @@ z = threadIdx.z + blockidx.z * blockDim.z
 offset = x + ( y * blockDim.x * gridDim.x ) + ( z * blockDim.x * gridDim.x * blockDim.y * gridDim.y )
 ```
 
+## GPU Memory
+• Registers   
+• Local Memory   
+• Global Memory   
+• Shared Memory   
+• L1/L2/L3 Cache   
+• Texture Memory   
+• Constant Memory (Read-Only Cache)   
 
 
 
