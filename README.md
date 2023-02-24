@@ -81,6 +81,10 @@ offset = x + ( y * blockDim.x * gridDim.x ) + ( z * blockDim.x * gridDim.x * blo
 • Texture Memory   
 • Constant Memory (Read-Only Cache)   
 
+**Registers**  
+Registers are fast on-chip memories that are used to store operands for the operations executed by the computing cores.   
+Registers are local to a thread, and each thread has exclusive access to its own registers: values in registers cannot be accessed by other threads, even from the same block, and are not available for the host. Registers are also not permanent, therefore data stored in registers is only available during the execution of a thread.
+
 
 
 
