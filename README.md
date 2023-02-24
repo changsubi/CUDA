@@ -72,7 +72,7 @@ offset = x + ( y * blockDim.x * gridDim.x ) + ( z * blockDim.x * gridDim.x * blo
 ```
 
 ## GPU Memory
-<img src="https://user-images.githubusercontent.com/100255173/220858875-d7d3b4c7-734b-4558-9407-cbb6c67c18a1.png" width="200px" height="250px"></img>
+<img src="https://user-images.githubusercontent.com/100255173/220858875-d7d3b4c7-734b-4558-9407-cbb6c67c18a1.png" width="200px" height="250px"></img>   
 • Registers   
 • Local Memory   
 • Global Memory   
