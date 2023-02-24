@@ -82,13 +82,15 @@ offset = x + ( y * blockDim.x * gridDim.x ) + ( z * blockDim.x * gridDim.x * blo
 • Constant Memory (Read-Only Cache)   
 
 **Registers**  
+In the case of CPU, each core has only a few hundred registers. On the other hand, in the case of GPU, the register size is quite large.    
+Usually, one SM has about 65,000 registers. Assuming a 32-Bit Register, the Register size is approximately 256 KB (4 Byte X 65,000).   
 Registers are fast on-chip memories that are used to store operands for the operations executed by the computing cores.   
 Registers are local to a thread, and each thread has exclusive access to its own registers: values in registers cannot be accessed by other threads, even from the same block, and are not available for the host. Registers are also not permanent, therefore data stored in registers is only available during the execution of a thread.
 
-
-
-
-
+**Local Memory**   
+If the register usage is too large, the value of a specific register (less accessible) is stored in local memory and the register is used for other purposes. (register spilling)   
+When compiling CUDA code using NVCC, the number of registers used per thread can be set. At this time, if the register usage is set small, local memory is used. However, local memory is very slow(Similarly Global Memory).   
+It is better to let the compiler know how to use local memory. Local memory is automatically coalesced for memory access.
 
 
 
