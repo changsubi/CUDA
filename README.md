@@ -1,5 +1,4 @@
-<img width="711" alt="Logo_and_CUDA" src="https://user-images.githubusercontent.com/100255173/221072466-5130565c-33c1-4e2a-915b-d2980009bea6.png">
-
+<img width="711" alt="Logo_and_CUDA" src="https://user-images.githubusercontent.com/100255173/221072615-66330d7e-aa63-4adb-92f4-9a2cf9b8ab19.png">
 
 Nvidia GPU using CUDA Core.   
 How to use CUDA Programming.   
