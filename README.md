@@ -111,10 +111,12 @@ However, since non-coalescing does not enter one cache line, one warp requires t
 **Pinned Memory** : Allocated Host(CPU) memory(RAM) is pageable by default. That is, a page fault operation may occur by the OS to move data from the virtual memory of the host to another physical memory. Just as the L1 cache provides significantly more on-chip memory than physically available, virtual memory provides significantly more memory than physically available.   
 On GPUs, data in pageable host memory cannot be safely accessed because the host OS has no control over when the data is physically moved.(it's Global Memory)   
 When transferring data from pageable host memory to device memory, the CUDA driver first allocates temporary pinned host memory, copies host data to pinned memory, and then transfers data from pinned memory to device memory.
-![image](https://user-images.githubusercontent.com/100255173/221078197-f43ef132-f0a8-4f8f-90c7-b71a95aaee23.png)
-
-
-
+![image](https://user-images.githubusercontent.com/100255173/221078197-f43ef132-f0a8-4f8f-90c7-b71a95aaee23.png)   
+The CUDA runtime can allocate pinned host memory directly through the following APIs:
+```cpp
+cudaError_t cudaMallocHost(void **devPtr, size_t count);
+```
+Allocates as many host memory as count bytes accessible from the device. Because pinned memory can be accessed directly from the device, it has higher read/write bandwidth than pageable memory. However, allocating excessive amounts of pinned memory can reduce the host system's performance by reducing the amount of pageable memory available to the host system that it uses to store virtual memory data.   
 
 
 
