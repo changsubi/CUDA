@@ -51,7 +51,6 @@ simply linked in using a "#include xxx.cuh" call
 • Grid: Grid is made up of blocks. Grid can be understood as one GPU chip (usually 65535 blocks)   
 • Example> SM per block: 32, block: 65536 → Total available threads: 65536 * 32 * 32   
 <img src="https://user-images.githubusercontent.com/100255173/220856882-bf6864cf-834f-4f85-86ac-bb110a2388fe.png" width="200px" height="250px"></img>
-<img src="https://user-images.githubusercontent.com/100255173/220858875-d7d3b4c7-734b-4558-9407-cbb6c67c18a1.png" width="200px" height="250px"></img>
 
 ## Thread Indexing
 <img src="https://user-images.githubusercontent.com/100255173/220861992-b73d9087-f5dd-4bde-a3bc-45cbe826ee2c.png" width="600px" height="400px"></img>
@@ -73,6 +72,7 @@ offset = x + ( y * blockDim.x * gridDim.x ) + ( z * blockDim.x * gridDim.x * blo
 ```
 
 ## GPU Memory
+<img src="https://user-images.githubusercontent.com/100255173/220858875-d7d3b4c7-734b-4558-9407-cbb6c67c18a1.png" width="200px" height="250px"></img>
 • Registers   
 • Local Memory   
 • Global Memory   
