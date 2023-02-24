@@ -127,7 +127,35 @@ Allocates as many host memory as count bytes accessible from the device. Because
 **Unified Memory** : Devices (GPUs) with compute capability 2.0 or higher support a special addressing mode called **Unified Virtual Addressing (UVA)**. Introduced in CUDA 4.0, UVA is supported on 64-bit Linux systems. Starting with compute capability 3.0 and higher (CUDA 6.0), it is supported under the name Unified Memory on 64-bit Windows systems.
 ![image](https://user-images.githubusercontent.com/100255173/221080646-ce340aad-90ad-48ee-bcd1-dfc887b1c0ba.png)   
 Prior to the introduction of UVA, pointers to host memory and pointers to device memory had to be managed separately. However, with UVA, the memory space referenced by the pointer is made clear to the application code. Pinned host memory allocated by cudaHostAlloc in UVA has the same host and device pointers. Thus, the returned pointer can be passed directly to kernel functions.   
-
+```cpp
+int main(int argc, char** argv)
+{
+    ...
+    
+    // using zero-copy memory(can be access host and device) for array A and B
+    // allocate zero-copy memory
+    CUDA_CHECK(cudaHostAlloc((void**)&h_A, nBytes, cudaHostAllocMapped));
+    CUDA_CHECK(cudaHostAlloc((void**)&h_B, nBytes, cudaHostAllocMapped));
+ 
+    // initialize data at host side
+    initialData(h_A, nElem);
+    initialData(h_B, nElem);
+    memset(hostRef, 0, nBytes);
+    memset(gpuRef, 0, nBytes);
+ 
+    // need to get the device pointer to the mapped pinned memory. But with UVA support, don't have to this.
+    //CUDA_CHECK(cudaHostGetDevicePointer((void**)&d_A, (void*)h_A, 0));
+    //CUDA_CHECK(cudaHostGetDevicePointer((void**)&d_B, (void*)h_B, 0));
+    
+    // add vector at host side for result checks
+    sumArraysOnHost(h_A, h_B, hostRef, nElem);
+ 
+    // execute kernel with zero copy memory
+    sumArraysZeroCopy<<<grids, blocks>>>(h_A, h_B, d_C, nElem);
+    
+    ...
+}
+```
 
 
 
