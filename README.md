@@ -107,8 +107,8 @@ __global__ void vector_add(const float * A,const float * B, float * C,const int 
 ```
 **Global Memory**  
 <img src="https://user-images.githubusercontent.com/100255173/221073189-5450561e-93cf-44af-8c34-43a48c1fa754.png" width="800px" height="200px"></img>    
-Global memory is the largest memory on the GPU and the slowest. Currently, you can buy GPUs with dozens of gigabytes of global memory. Access latency is known to be about 400~800 cycles. Accessible from anywhere while coding CUDA, but IO is too slow. So, it should be approached as minimally as possible. You can't not use it though. This is because, in the end, only global memory is connected to the CPU when data is transferred to the CPU.
-
+Global memory is the largest memory on the GPU and the slowest. Currently, you can buy GPUs with dozens of gigabytes of global memory. Access latency is known to be about 400~800 cycles. Accessible from anywhere while coding CUDA, but IO is too slow. So, it should be approached as minimally as possible. You can't not use it though. This is because, in the end, only global memory is connected to the CPU when data is transferred to the CPU.   
+While global memory is visible to all threads, remember that global memory is not coherent, and changes made by one thread block may not be available to other thread blocks during the kernel execution. However, all memory operations are finalized when the kernel terminates.
 
 
 
