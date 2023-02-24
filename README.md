@@ -73,14 +73,7 @@ offset = x + ( y * blockDim.x * gridDim.x ) + ( z * blockDim.x * gridDim.x * blo
 
 ## GPU Memory
 <img src="https://user-images.githubusercontent.com/100255173/220858875-d7d3b4c7-734b-4558-9407-cbb6c67c18a1.png" width="200px" height="250px"></img>   
-• Registers   
-• Local Memory   
-• Global Memory   
-• Shared Memory   
-• L1/L2/L3 Cache   
-• Texture Memory   
-• Constant Memory (Read-Only Cache)   
-
+   
 **Registers**  
 In the case of CPU, each core has only a few hundred registers. On the other hand, in the case of GPU, the register size is quite large.    
 Usually, one SM has about 65,000 registers. Assuming a 32-Bit Register, the Register size is approximately 256 KB (4 Byte X 65,000).   
@@ -114,11 +107,11 @@ While global memory is visible to all threads, remember that global memory is no
 The difference in performance between the code that considers memory coalescing and the code that does not occurs 50 to 100%.   
 All threads in the warp issue the same memory instruction. When 32 memory requests executed in this way have consecutive memory addresses and access one cache line, it is called coalesced memory access. In this case, a memory request is created by merging the memory instructions of all threads of warp into one. In other words, Warp can handle all memory requests of 32 threads with only one memory access.   
 However, since non-coalescing does not enter one cache line, one warp requires two cache accesses. As a result, to process one memory instruction in warp, a total of two memory requests must be generated.
-![Untitled](https://user-images.githubusercontent.com/100255173/221075574-4724a164-fa49-49b5-9c01-476c8e9465f6.png)
+![Untitled](https://user-images.githubusercontent.com/100255173/221075574-4724a164-fa49-49b5-9c01-476c8e9465f6.png)   
 
-
-
-
+**Pinned Memory**
+Allocated Host(CPU) memory(RAM) is pageable by default. That is, a page fault operation may occur by the OS to move data from the virtual memory of the host to another physical memory. Just as the L1 cache provides significantly more on-chip memory than physically available, virtual memory provides significantly more memory than physically available.   
+On GPUs, data in pageable host memory cannot be safely accessed because the host OS has no control over when the data is physically moved.(it's Global Memory)
 
 
 
