@@ -114,7 +114,11 @@ When transferring data from pageable host memory to device memory, the CUDA driv
 ![image](https://user-images.githubusercontent.com/100255173/221078197-f43ef132-f0a8-4f8f-90c7-b71a95aaee23.png)   
 The CUDA runtime can allocate pinned host memory directly through the following APIs:
 ```cpp
-cudaError_t cudaMallocHost(void **devPtr, size_t count);
+cudaError_t status = cudaMallocHost((void **)&devPtr, size_t countByte);
+if (status != cudaSuccess){
+   fprintf(stderr, "Error returned from pinned memory allocation\n");
+   exit(1);
+}
 ```
 Allocates as many host memory as count bytes accessible from the device. Because pinned memory can be accessed directly from the device, it has higher read/write bandwidth than pageable memory. However, allocating excessive amounts of pinned memory can reduce the host system's performance by reducing the amount of pageable memory available to the host system that it uses to store virtual memory data.   
 
