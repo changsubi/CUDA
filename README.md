@@ -110,7 +110,7 @@ However, since non-coalescing does not enter one cache line, one warp requires t
 
 **Pinned Memory** : Allocated Host(CPU) memory(RAM) is pageable by default. That is, a page fault operation may occur by the OS to move data from the virtual memory of the host to another physical memory. Just as the L1 cache provides significantly more on-chip memory than physically available, virtual memory provides significantly more memory than physically available.   
 On GPUs, data in pageable host memory cannot be safely accessed because the host OS has no control over when the data is physically moved.(it's Global Memory)   
-When transferring data from pageable host memory to device memory, the CUDA driver first allocates temporary pinned host memory, copies host data to pinned memory, and then transfers data from pinned memory to device memory.
+When transferring data from pageable host memory to device memory, the CUDA driver first allocates temporary pinned host memory, copies host data to pinned memory, and then transfers data from pinned memory to device memory.   
 ![image](https://user-images.githubusercontent.com/100255173/221078197-f43ef132-f0a8-4f8f-90c7-b71a95aaee23.png)   
 The CUDA runtime can allocate pinned host memory directly through the following APIs:
 ```cpp
@@ -126,7 +126,7 @@ cudaError_t cudaFreeHost(void *ptr); // release pinned memory
 ```
 Allocates as many host memory as count bytes accessible from the device. Because pinned memory can be accessed directly from the device, it has higher read/write bandwidth than pageable memory. However, allocating excessive amounts of pinned memory can reduce the host system's performance by reducing the amount of pageable memory available to the host system that it uses to store virtual memory data.   
    
-**Unified Memory** : Devices (GPUs) with compute capability 2.0 or higher support a special addressing mode called **Unified Virtual Addressing (UVA)**. Introduced in CUDA 4.0, UVA is supported on 64-bit Linux systems. Starting with compute capability 3.0 and higher (CUDA 6.0), it is supported under the name Unified Memory on 64-bit Windows systems.
+**Unified Memory** : Devices (GPUs) with compute capability 2.0 or higher support a special addressing mode called **Unified Virtual Addressing (UVA)**. Introduced in CUDA 4.0, UVA is supported on 64-bit Linux systems. Starting with compute capability 3.0 and higher (CUDA 6.0), it is supported under the name Unified Memory on 64-bit Windows systems.   
 ![image](https://user-images.githubusercontent.com/100255173/221080646-ce340aad-90ad-48ee-bcd1-dfc887b1c0ba.png)   
 Prior to the introduction of UVA, pointers to host memory and pointers to device memory had to be managed separately. However, with UVA, the memory space referenced by the pointer is made clear to the application code. Pinned host memory allocated by cudaHostAlloc in UVA has the same host and device pointers. Thus, the returned pointer can be passed directly to kernel functions.   
 ```cpp
